@@ -15,7 +15,7 @@ export class NewsItem extends Component{
                     <p className="card-text">{description}...</p>
                     <span className="badge rounded-pill bg-dark">{source}</span>
                     <p className="card-text"><small
-                        class="text-muted">By {!author ? "unknown" : author} on {new Date(date).toDateString()}</small>
+                        className="text-muted">By {!author ? "unknown" : author} on {new Date(date).toDateString()}</small>
                     </p>
                     <a href={newsUrl} className="btn btn-dark">Go somewhere</a>
                 </div>
