@@ -1,38 +1,28 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from './Components/Navbar';
 import News from './Components/News';
+import Home from './Home.js';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import LoadingBar from 'react-top-loading-bar'
 
-export default function App() {
+const App=()=> {
+    const [progress, setProgress] = useState(0);
+
     return (
         <Router>
-            <Navbar />
+            <Navbar/>
+            <LoadingBar color='#f11946' progress={progress}/>
             <Routes>
-                <Route
-                    path="/entertainment"
-                    element={<News key="entertainment" pageSize={9} category="entertainment" />}
-                />
-                <Route
-                    path="/business"
-                    element={<News key="business" pageSize={9} category="business" />}
-                />
-                <Route
-                    path="/health"
-                    element={<News key="health" pageSize={9} category="health" />}
-                />
-                <Route
-                    path="/science"
-                    element={<News key="science" pageSize={9} category="science" />}
-                />
-                <Route
-                    path="/sports"
-                    element={<News key="sports" pageSize={9} category="sports" />}
-                />
-                <Route
-                    path="/technology"
-                    element={<News key="technology" pageSize={9} category="technology" />}
-                />
+                <Route path="/" element={<Home key="home"/>}/>
+                <Route path="/entertainment" element={<News setProgress={setProgress} key="entertainment" category="entertainment"/>}/>
+                <Route path="/business" element={<News setProgress={setProgress} key="business" category="business"/>}/>
+                <Route path="/health" element={<News setProgress={setProgress} key="health" category="health"/>}/>
+                <Route path="/science" element={<News setProgress={setProgress} key="science" category="science"/>}/>
+                <Route path="/sports" element={<News setProgress={setProgress} key="sports" category="sports"/>}/>
+                <Route path="/technology" element={<News setProgress={setProgress} key="technology" category="technology"/>}/>
             </Routes>
         </Router>
-    );
+    )
+
 }
+export default App
